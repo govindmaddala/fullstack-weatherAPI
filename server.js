@@ -10,6 +10,10 @@ app.use(express.static(path.join(__dirname,"/build")))
 app.use(express.json())
 app.use(cors());
 
+app.get('/',(req,res)=>{
+    res.send(path.join(__dirname,'/build/index.html'))
+})
+
 app.post('/weather', async (req, res) => {
     const { cityName } = req.body;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=a80e09962afb6bcde440998015cb5721&units=metric`;
